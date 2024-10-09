@@ -8,13 +8,13 @@ terraform {
 
 # configuration of backend with aws s3 
 
-#   backend "s3" {
-#     key     = "vpc/terraform.tfstate"
-#     region  = "us-east-1"
-#     bucket  = "bucket-name"
-#     profile = "default"
-#     # profile = dev
-#   }
+backend "s3" {
+     key     = "vpc/terraform.tfstate"
+     region  = "us-east-1"
+     bucket  = "skn-gitlab-tf-backend"
+     #profile = "default"
+     # profile = dev
+   }
 
 }
 
