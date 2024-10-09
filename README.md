@@ -19,9 +19,26 @@ This repository contains Terraform configurations to deploy a fully functional A
 - AWS account with appropriate IAM permissions
 - Terraform >= 1.0.0
 
+## Continuous Integration and Deployment (CI/CD)
+This project leverages GitLab CI/CD for automated infrastructure provisioning using Terraform. The CI/CD pipeline ensures that changes are validated, planned, and applied in a controlled and automated manner.
+
+### GitLab CI Pipeline Stages:
+1. **Check**: Runs `terraform fmt` and `terraform validate` to ensure code consistency and syntax correctness.
+2. **Plan**: Generates and reports a Terraform execution plan, allowing you to review infrastructure changes.
+3. **Apply**: Applies the changes based on the reviewed plan (manual trigger).
+4. **Destroy**: Manually trigger the destruction of infrastructure in a given environment.
+
+### How to Use CI/CD:
+- Make sure your changes are committed and pushed to the appropriate GitLab branch (e.g., `dev`).
+- GitLab CI/CD will automatically run the `plan` stage for the `dev` environment.
+- To apply changes, manually trigger the `apply` job in GitLab's UI.
+- To destroy resources, manually trigger the `destroy` job.
+
 ## Usage
-1. Clone the repository:
+1. Initialize and apply the configuration for your environment:
    ```bash
    terraform init
    terraform apply -var-file="vars/variables.dev.tfvars"
+   ```
 
+By combining Terraform's robust infrastructure as code capabilities with GitLab CI/CD automation, this setup ensures that infrastructure deployments are reproducible, traceable, and easy to manage across different environments.
